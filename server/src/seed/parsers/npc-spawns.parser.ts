@@ -1,5 +1,5 @@
 import type { NewNpcSpawn } from '../../db/schema';
-import { SPAWN_Y } from '@nj/game-core';
+const SPAWN_Y = 0;
 
 export interface NpcSpawnFixtureRow {
   npcId: number;
