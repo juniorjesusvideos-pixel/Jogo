@@ -49,8 +49,6 @@ import {
 import { createAudioManager, type AudioManager } from './audio/audio-manager';
 import { createDomAudioBackend } from './audio/audio-backend';
 import { loadAudioSettings, type AudioSettings } from './audio/audio-settings';
-import { mountMobileControls } from './ui/mobile-controls';
-import './mobile.css';
 
 let gameUiMounted = false;
 let activeAudioManager: AudioManager | null = null;
@@ -79,7 +77,6 @@ function mountGameUi(audioSettings: AudioSettings): void {
   mountFriendsPanel();
   mountPvpToggle();
   mountStatAllocate();
-  mountMobileControls();
 
   registerPanel('inventory-window', { mount: mountInventoryWindow, hotkey: 'I' });
   registerPanel('skill-window', { mount: mountSkillWindow, hotkey: 'K' });
