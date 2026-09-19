@@ -402,7 +402,7 @@ export function buildMobSpawnFixture(
   const xml = readFileSync(xmlPath, 'utf-8');
   const monstersXml = readFileSync(join(FIXTURE_DATA_DIR, 'monsters.xml'), 'utf-8');
   const levelByNpcId = new Map(
-    parseMonsters(monstersXml, [...TI_MOB_IDS]).map((m) => [m.npcId, m.level])
+    parseMonsters(monstersXml, [...TI_MOB_IDS]).filter((m) => m.npcId !== undefined).map((m) => [m.npcId as number, m.level])
   );
   const territoryRows = buildMobSpawnsFromXml(xml, undefined, levelByNpcId);
   return [...territoryRows, ...TUTORIAL_MOB_ROWS];
