@@ -1,4 +1,11 @@
-import { l2ToLocal } from '@nj/game-core';
+const L2_ANCHOR = { x: -84300, y: 243400 } as const;
+const L2_TO_LOCAL_SCALE = 0.01;
+function l2ToLocal(l2x: number, l2y: number): { x: number; z: number } {
+  return {
+    x: (l2x - L2_ANCHOR.x) * L2_TO_LOCAL_SCALE,
+    z: -(l2y - L2_ANCHOR.y) * L2_TO_LOCAL_SCALE,
+  };
+}
 import type { AppDatabase } from '../../db/client';
 import { teleportDestinations } from '../../db/schema';
 
