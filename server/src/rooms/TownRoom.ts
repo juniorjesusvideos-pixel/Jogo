@@ -294,7 +294,7 @@ export class TownRoom extends Room<{ state: TownState }> {
   /** Sessions in their post-death freeze, mapped to the time they stand back up. */
   private respawnStandAtMs = new Map<string, number>();
   /** Pending reconnection deferreds, so a newer session can evict a stale one. */
-  private pendingReconnections = new Map<string, { reject: (reason?: unknown) => void }>();
+  private pendingReconnections = new Map<string, { reject: Function }>();
 
   override onCreate(options: TownRoomOptions = {}): void {
     this.db = getDb(options.dbPath ?? DEFAULT_DB_PATH);
