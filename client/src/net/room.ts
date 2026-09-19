@@ -367,8 +367,6 @@ export function wireRoom(
       return {
         id,
         npcId: mob.npcId,
-        name: hook?.name,
-        level: hook?.level,
         x: mob.x,
         y: mob.y,
         z: mob.z,
@@ -380,7 +378,7 @@ export function wireRoom(
       };
     }).filter((entry): entry is NonNullable<typeof entry> => entry !== null);
     for (const [id, hook] of hookById) {
-      if (!mobsMap.has(id)) merged.push({ ...hook, name: hook.name, level: hook.level, aggroTargetSessionId: undefined });
+      if (!mobsMap.has(id)) merged.push({ ...hook, aggroTargetSessionId: undefined });
     }
     setMobs(merged);
   };
